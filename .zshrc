@@ -1,54 +1,14 @@
-export ZSH="/home/fonta/.oh-my-zsh"
+#!/bin/sh
 
-autoload -U colors && colors
 #https://github.com/ohmyzsh/ohmyzsh/blob/master/themes/eastwood.zsh-theme
-source ~/.config/zsh/eastwood.zsh
+#source ~/.config/zsh/eastwood.zsh
 
-#git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.config/zsh/syntax-highlighting
-source ~/.config/zsh/syntax-highlighting/zsh-syntax-highlighting.zsh
-
-#git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/zsh/autosuggestions
-source ~/.config/zsh/autosuggestions/zsh-autosuggestions.zsh
-
-source $ZSH/oh-my-zsh.sh
-
-export EDITOR='nvim'
-export TERM=xterm-256color
-#export PATH=$PATH:~/.flutter/bin:~/Android/Sdk/emulator:~/.npm-global/bin:~/.flutter/.pub-cache/bin
-
-# Enable ls colors
-export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export ZSHCONFIGDIR=$HOME/.config/zsh
 
 # Take advantage of $LS_COLORS for completion as well.
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
-# enable diff color if possible.
-if command diff --color . . &>/dev/null; then
-  alias diff='diff --color'
-fi
-
-alias o='xdg-open'
-alias py='python3'
-alias ls='ls -lh --color=auto --hyperlink=yes'
-alias lsa='ls -Alh --color=auto --hyperlink=yes'
-alias ga='git add'
-alias gaa='git add .'
-alias gc='git commit -m'
-alias gp='git push'
-alias gpl='git pull'
-alias gst='git status'
-alias glog='git log'
-alias gco='git checkout'
-alias code='code-insiders'
-alias v='nvim'
-alias vim='nvim'
-alias zshrc='nvim ~/.zshrc'
-alias gbr='xdg-open $(git remote get-url origin | sed -e "s/git\@/https:\/\//;s/:/\//2") &>/dev/null'
-alias bat='batcat --color=always --decorations=always --paging --tabs=2'
-alias rmj='find . -name "*.class" -exec rm -f {} \;'
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
-
-
+# some useful options (man zshoptions)
 setopt auto_cd
 setopt multios #??
 setopt prompt_subst #??
@@ -56,61 +16,86 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
 
+#da oh-my-zsh
+# History command configuration
+setopt extended_history       # record timestamp of command in HISTFILE
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
 
-#export MANPAGER="sh -c 'col -bx | batcat --color=always --decorations=always --pagine --tabs=2 -l man -p"
+# dal tizio
+setopt extendedglob nomatch
+setopt interactive_comments
+stty stop undef		# Disable ctrl-s to freeze terminal.
+zle_highlight=('paste:none')
 
-alias -g ...='../..'
-alias -g ....='../../..'
+#da ohmyzsh --- roba completion
+unsetopt menu_complete # do not autoselect the first completion entry
+unsetopt flowcontrol
+setopt auto_menu # show completion menu on successive tab press
+setopt complete_in_word
+setopt always_to_end
 
-function d () {
-  if [[ -n $1 ]]; then
-    dirs "$@"
-  else
-    dirs -v | head -10
-  fi
-}
-compdef _dirs d
+# beeping is annoying
+unsetopt BEEP
 
-#tmp
-alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
-alias egrep='egrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
-alias fgrep='fgrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
-#tmp
+# completions
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+# zstyle ':completion::complete:lsof:*' menu yes select
+zstyle ':completion:*' special-dirs true # complete . and .. special dirs
+zmodload zsh/complist
+# compinit
+_comp_options+=(globdots)		# Include hidden files.
 
-function venv {
-	[ -d ./venv ] || python3 -m venv venv
-	source ./venv/bin/activate
-}
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
 
-function mckdir {
-	mkdir -p $@ && cd ${@:$#}
-}
+# Colors
+autoload -Uz colors && colors
 
-function sticker {
-	local original=$1
-	local newName=${original%.*}.png
-	convert $original $newName
-	convert $newName -resize 512x512 $newName
-}
+# Useful Functions
+source "$ZSHCONFIGDIR/zsh-functions"
 
+# Normal files to source
+zsh_add_file "zsh-exports"
+zsh_add_file "zsh-vim-mode"
+zsh_add_file "zsh-aliases"
+zsh_add_file "zsh-prompt"
 
-# clipcopy - Copy data to clipboard
-# Usage:
-#  <command> | clipcopy    - copies stdin to clipboard
-#  clipcopy <file>         - copies a file's contents to clipboard
-#
-# clippaste - writes clipboard's contents to stdout
-function clipcopy() {
-	xclip -in -selection clipboard < "${1:-/dev/stdin}"; 
-}
+# Plugins
+zsh_add_plugin "zsh-users/zsh-autosuggestions"
+zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
+zsh_add_plugin "hlissner/zsh-autopair"
+#zsh_add_completion "esc/conda-zsh-completion" false
+# For more plugins: https://github.com/unixorn/awesome-zsh-plugins
+# More completions https://github.com/zsh-users/zsh-completions
 
-function clippaste() {
-	xclip -out -selection clipboard; 
-}
+# Key-bindings
+#bindkey -s '^o' 'ranger^M'
+#bindkey -s '^f' 'zi^M'
+#bindkey -s '^s' 'ncdu^M'
+# bindkey -s '^n' 'nvim $(fzf)^M'
+# bindkey -s '^v' 'nvim\n'
+#bindkey -s '^z' 'zi^M'
+#bindkey '^[[P' delete-char
+#bindkey "^p" up-line-or-beginning-search # Up
+#bindkey "^n" down-line-or-beginning-search # Down
+#bindkey "^k" up-line-or-beginning-search # Up
+#bindkey "^j" down-line-or-beginning-search # Down
+#bindkey -r "^u"
+#bindkey -r "^d"
 
-# autosource venv on cd
-#! `cd` gives exit status 1 cause $1 doesnt exist (?)
-#function cd {
-#	builtin cd $1
-#	[ -d ./venv ] && source ./venv/bin/activate
-#}
+# FZF 
+#[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+#[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#[ -f $ZDOTDIR/completion/_fnm ] && fpath+="$ZDOTDIR/completion/"
+# export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
+compinit
+
+# Edit line in vim with ctrl-e:
+#autoload edit-command-line; zle -N edit-command-line
+# bindkey '^e' edit-command-line
