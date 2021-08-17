@@ -1,7 +1,8 @@
 # My dotfiles
 
-[original zsh configuration](https://github.com/ChristianChiarulli/Machfiles)
-[original zsh prompt](https://github.com/ohmyzsh/ohmyzsh/blob/master/themes/eastwood.zsh-theme)
+## Credits
+-[original zsh configuration](https://github.com/ChristianChiarulli/Machfiles)
+-[original zsh prompt](https://github.com/ohmyzsh/ohmyzsh/blob/master/themes/eastwood.zsh-theme)
 
 ## Create a bare repository
 
@@ -27,15 +28,21 @@ git clone --bare https://github.com/fedfontana/dotto.git $HOME/.dotfiles
 ## Install stuff
 
 ```sh
-sudo apt install git neovim gnome-boxes vlc zsh
+sudo apt install -y git neovim gnome-boxes vlc zsh tree feh
 ```
-- todo: aggiungere chrome, alacritty, github cli, ms teams, spotify
+- todo: aggiungere i3-gaps, chrome, alacritty/kitty, gnome pdf reader, github cli, ms teams, spotify, htop, neofetch, onefetch, datagrip, npm, flutter, andoird studio, batcat, ranger, nvidi stuff?, anki, discord, telegram, ulauncher/albert, meld, imagemagick, npm, python3-pip, java
 - todo aggiungere roba da old-ohmyzsh?
+- todo `locate` e `updatedb`
+- aggiungere setup template e keyboard layout (prendere da leenucs)
+- japanes font
 ### Set zsh as default shell
 
 `chsh -s /usr/bin/zsh`
+And then reboot
 
 ### Install vscode-insiders
+
+### Vim plug
 
 ### Install i3-gaps and compton
 
