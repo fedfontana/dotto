@@ -1,8 +1,8 @@
 # My dotfiles
 
 ## Credits
--[original zsh configuration](https://github.com/ChristianChiarulli/Machfiles)
--[original zsh prompt](https://github.com/ohmyzsh/ohmyzsh/blob/master/themes/eastwood.zsh-theme)
+- [original zsh configuration](https://github.com/ChristianChiarulli/Machfiles)
+- [original zsh prompt](https://github.com/ohmyzsh/ohmyzsh/blob/master/themes/eastwood.zsh-theme)
 
 ## Create a bare repository
 
