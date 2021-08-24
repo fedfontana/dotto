@@ -28,9 +28,9 @@ git clone --bare https://github.com/fedfontana/dotto.git $HOME/.dotfiles
 ## Install stuff
 
 ```sh
-sudo apt install -y git neovim gnome-boxes vlc zsh tree feh
+sudo apt install -y git neovim gnome-boxes vlc zsh tree feh curl
 ```
-- todo: aggiungere i3-gaps, chrome, alacritty/kitty, gnome pdf reader, github cli, ms teams, spotify, htop, neofetch, onefetch, datagrip, npm, flutter, andoird studio, batcat, ranger, nvidi stuff?, anki, discord, telegram, ulauncher/albert, meld, imagemagick, npm, python3-pip, java
+- todo: aggiungere i3-gaps, chrome, alacritty/kitty, gnome pdf reader, github cli, ms teams, spotify, htop, neofetch, onefetch, datagrip, npm, flutter, andoird studio, batcat, ranger, nvidia stuff?, anki, discord, telegram, ulauncher/albert, meld, imagemagick, npm, python3-pip, java
 - todo aggiungere roba da old-ohmyzsh?
 - todo `locate` e `updatedb`
 - aggiungere setup template e keyboard layout (prendere da leenucs)

@@ -48,6 +48,8 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias -g ...='../..'
 alias -g ....='../../..'
 
+alias regolith-dots='/usr/bin/git --git-dir=$HOME/regolith-dots --work-tree=$HOME'
+
 function d () {
   if [[ -n $1 ]]; then
     dirs "$@"
