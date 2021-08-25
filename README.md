@@ -35,14 +35,8 @@ sudo apt install -y git neovim gnome-boxes vlc zsh tree feh curl
 - todo `locate` e `updatedb`
 - aggiungere setup template e keyboard layout (prendere da leenucs)
 - japanes font
-### Set zsh as default shell
-
-`chsh -s /usr/bin/zsh`
-And then reboot
 
 ### Install vscode-insiders
-
-### Vim plug
 
 ### Install i3-gaps and compton
 

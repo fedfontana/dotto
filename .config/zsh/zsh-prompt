@@ -29,10 +29,12 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 
 zstyle ':vcs_info:*' check-for-changes true
 # zstyle ':vcs_info:git:*' formats " %r/%S %b %m%u%c "
-zstyle ':vcs_info:git:*' formats " %{$fg[green]%}[%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%}]"
+# https://fontawesome.com/v5.15/icons/code-branch?style=regular
+zstyle ':vcs_info:git:*' formats "%{$fg[green]%}[%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[green]%}]"
 
 # [git status git branch][current folder] 
-PROMPT="\$vcs_info_msg_0_%(?:%{$fg_bold[cyan]%}[%c]%{$reset_color%}$ "
+PROMPT="\$vcs_info_msg_0_"
+PROMPT+="%{$fg_bold[cyan]%}[%~]%{$reset_color%}$ "
 
 # PROMPT="%{$fg[green]%}%n@%m %~ %{$reset_color%}%#> "
 # TODO look into this for more colors
