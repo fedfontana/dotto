@@ -1,7 +1,7 @@
 #!/bin/sh
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 
-alias vimrc='nvim ~/.config/nvim/'
+alias vimrc='nvim ~/.config/nvim/init.vim'
 alias zshrc='nvim ~/.zshrc'
 alias zaliases='nvim ~/.config/zsh/zsh-aliases'
 
