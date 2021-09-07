@@ -6,9 +6,9 @@
 
 ## Create a bare repository
 
-Se non ci sono questi config in zshrc e gitconfig
+Add this alias 
 ```sh
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME
+alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME
 ```
 
 Create the repository, add, commit and push changes
@@ -20,32 +20,7 @@ dotfiles commit -m "added zshrc"
 dotfiles push -u origin master
 ```
 
-Clone the bare repository
+Clone the repository
 ```sh
-git clone --bare https://github.com/fedfontana/dotto.git $HOME/.dotfiles
+git clone https://github.com/fedfontana/dotto.git /home/$USER
 ```
-
-## Install stuff
-
-```sh
-sudo apt install -y git neovim gnome-boxes vlc zsh tree feh curl
-```
-- todo: aggiungere i3-gaps, chrome, alacritty/kitty, gnome pdf reader, github cli, ms teams, spotify, htop, neofetch, onefetch, datagrip, npm, flutter, andoird studio, batcat, ranger, nvidia stuff?, anki, discord, telegram, ulauncher/albert, meld, imagemagick, npm, python3-pip, java
-- todo aggiungere roba da old-ohmyzsh?
-- todo `locate` e `updatedb`
-- aggiungere setup template e keyboard layout (prendere da leenucs)
-- japanes font
-
-### Install vscode-insiders
-
-### Install i3-gaps and compton
-
-### Change autostart applications and remove default keyboard shortcuts
-
-### Change display settings (sleep, black screen)
-
-### Change firefox preferences
-- login into ff account
-- check restore previous session
-- under extensions, remove the long click to pin tab
-- remove extensions from top bar and add bookmarks menu in new tab
