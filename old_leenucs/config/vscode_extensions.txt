@@ -1,0 +1,41 @@
+Angular snippets 
+Auto close tag
+Auto rename tag
+Better comments
+Bracket pair colorizer 2
+C/C++
+Code runner 
+Color highlight
+Dart 
+Debugger for Java
+ES7 react/redux/graph...
+ESLint
+Flutter
+Git Graph
+Git lens
+html css support
+html snippets
+import cost
+intellisence for css class names in...
+java dependency viewer
+java extension pack
+java test runner
+javascript(es6) code snippets
+kinda monokai dark
+language support for java
+latex workshop
+live server
+live share
+markdown all in one
+markdown preview enhanced
+material icon theme
+maven for java
+path intellisense
+prettier - code formatter
+python
+rainbow csv
+vetur
+visual studio intellicode
+django
+
+font family: 'JetBrains Mono'
