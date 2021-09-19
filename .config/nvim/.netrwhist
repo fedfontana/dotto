@@ -1,3 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/fonta/.config/regolith/i3xrocks'
+let g:netrw_dirhist_3='/home/fonta/.config/zsh'
+let g:netrw_dirhist_2='/home/fonta/.config/nvim'
 let g:netrw_dirhist_1='/home/fonta/.config/zsh'

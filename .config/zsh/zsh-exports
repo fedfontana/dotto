@@ -1,25 +1,29 @@
 #!/bin/sh
-HISTFILE="$XDG_DATA_HOME"/zsh/history
-#HISTFILE=$HOME/.zsh_history
-HISTSIZE=1000000
-SAVEHIST=1000000
 export EDITOR='nvim'
 export TERMINAL='alacritty'
 export BROWSER='firefox'
 export TERM=xterm-256color #??
 export VISUAL='code-insiders'
 export PATH="$HOME/.local/bin":$PATH
-#export MANPAGER="sh -c 'col -bx | batcat --color=always --decorations=always --pagine --tabs=2 -l man -p"
+export PATH="$HOME/.scripts":$PATH
+#export PATH="$HOME/.flutter/bin":$PATH
+#export PATH="$HOME/.flutter/.pub_cache/bin":$PATH
+#export PATH="$HOME/Android/Sdk/emulator":$PATH
+#export PATH="$HOME/.npm-global/bin":$PATH
+#export PATH="$HOME/.cargo/bin":$PATH
+export MANPAGER="sh -c 'col -bx | batcat --color=always --decorations=always --tabs=2 -l man -p'"
 export MANWIDTH=999
-#export PATH=$PATH:~/.flutter/bin:~/Android/Sdk/emulator:~/.npm-global/bin:~/.flutter/.pub-cache/bin:~/.cargo/bin
 
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
 ## History file configuration
-[ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
-[ "$HISTSIZE" -lt 50000 ] && HISTSIZE=50000
-[ "$SAVEHIST" -lt 10000 ] && SAVEHIST=10000
-
+export HISTFILE=$HOME/.zsh_history
+export HISTSIZE=50000
+export SAVEHIST=10000
+setopt INC_APPEND_HISTORY
+#setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE # if the command starts with a space it wont be saved in the history
 # eval "`pip completion --zsh`"
 
 ### PATH

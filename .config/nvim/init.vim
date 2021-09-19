@@ -14,6 +14,14 @@ set mouse=a
 "nmap <c-s> :w<CR>
 imap <c-s> <Esc>:w<CR>a
 
+" Autoinstall vim-plug and its plugins
+"if ! filereadable(expand('~/.vim/plugged'))
+"	echo "Downloading vim plugged..."
+"	silent !sh -c 'curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+"	echo "Installing plugins..."
+"	autocmd VimEnter * PlugInstall
+"endif
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'jiangmiao/auto-pairs'

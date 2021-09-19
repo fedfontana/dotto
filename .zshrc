@@ -64,6 +64,7 @@ zsh_add_file "zsh-exports"
 zsh_add_file "zsh-vim-mode"
 zsh_add_file "zsh-aliases"
 zsh_add_file "zsh-prompt"
+zsh_add_file "zsh-keys"
 
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
@@ -95,7 +96,3 @@ zsh_add_plugin "hlissner/zsh-autopair"
 #[ -f $ZDOTDIR/completion/_fnm ] && fpath+="$ZDOTDIR/completion/"
 # export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
 compinit
-
-# Edit line in vim with ctrl-e:
-#autoload edit-command-line; zle -N edit-command-line
-# bindkey '^e' edit-command-line
