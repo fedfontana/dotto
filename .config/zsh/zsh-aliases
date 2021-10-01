@@ -46,10 +46,10 @@ alias zshrc='nvim ~/.zshrc'
 alias gbr='xdg-open $(git remote get-url origin | sed -e "s/git\@/https:\/\//;s/:/\//2") &>/dev/null'
 alias bat='batcat --color=always --decorations=always --paging --tabs=2'
 alias rmj='find . -name "*.class" -exec rm -f {} \;'
-alias dots='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
 alias -g ...='../..'
 alias -g ....='../../..'
 
+alias dots='/usr/bin/git --git-dir=$HOME/dotto.git --work-tree=$HOME'
 alias rdots='/usr/bin/git --git-dir=$HOME/regolith-dots --work-tree=$HOME'
 
 function d () {
