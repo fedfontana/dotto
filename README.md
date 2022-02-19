@@ -19,3 +19,17 @@ dots add .zshrc
 dots commit -m "added zshrc"
 dots push -u origin master
 ```
+
+## Clone and use this repo
+
+Clone the repo
+```sh
+git clone git@github.com:fedfontana/dotto.git dotto.git
+```
+
+then move all of the stuff in the right places running this command:
+```sh
+git --git-dir=./dotto.git --work-tree=. checkout master .
+```
+(assuming you are in /home/\<your user\>/)
+
