@@ -33,3 +33,14 @@ git --git-dir=./dotto.git --work-tree=. checkout master .
 ```
 (assuming you are in /home/\<your user\>/)
 
+still need to clone the bare repo
+```sh
+git clone --bare git@github.com:fedfontana/dotto.git dotto.git
+```
+
+remove the untracked file stuff
+```
+dots config --local status.showUntrackedFiles no
+```
+
+then add all of the stuff back again and push? should really find a better solution
