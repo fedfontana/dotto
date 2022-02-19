@@ -25,6 +25,7 @@ if command diff --color . . &>/dev/null; then
   alias diff='diff --color'
 fi
 
+alias r='ranger'
 alias o='xdg-open'
 alias py='python3'
 alias ls='ls -lh --color=auto --hyperlink=yes --group-directories-first'
