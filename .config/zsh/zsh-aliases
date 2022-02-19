@@ -1,0 +1,163 @@
+#!/bin/sh
+alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
+
+alias vimrc='nvim ~/.config/nvim/init.vim'
+alias zshrc='nvim ~/.zshrc'
+alias zaliases='nvim ~/.config/zsh/zsh-aliases'
+
+# Colorize grep output
+alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
+alias egrep='egrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
+alias fgrep='fgrep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
+
+# easier to read disk
+alias df='df -h'                          # human-readable sizes
+alias free='free -m'                      # show sizes in MB
+
+# get top process eating memory
+alias psmem='ps auxf | sort -nr -k 4 | head -5'
+
+# get top process eating cpu ##
+alias pscpu='ps auxf | sort -nr -k 3 | head -5'
+
+# enable diff color if possible.
+if command diff --color . . &>/dev/null; then
+  alias diff='diff --color'
+fi
+
+alias r='ranger'
+alias o='xdg-open'
+alias py='python3'
+alias ls='ls -lh --color=auto --hyperlink=yes --group-directories-first'
+alias l='ls -lh --color=auto --hyperlink=yes --group-directories-first'
+alias lsa='ls -Alh --color=auto --hyperlink=yes --group-directories-first'
+alias la='ls -Alh --color=auto --hyperlink=yes --group-directories-first'
+alias ga='git add'
+alias gaa='git add .'
+alias gc='git commit -m'
+alias gp='git push'
+alias gpl='git pull'
+alias gst='git status'
+alias glog='git log --graph --abbrev-commit --decorate --all --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n""          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)"'
+alias gco='git checkout'
+alias code='code-insiders'
+alias v='nvim'
+alias vim='nvim'
+alias zshrc='nvim ~/.zshrc'
+alias gbr='xdg-open $(git remote get-url origin | sed -e "s/git\@/https:\/\//;s/:/\//2") &>/dev/null'
+alias bat='batcat --color=always --decorations=always --paging --tabs=2'
+alias rmj='find . -name "*.class" -exec rm -f {} \;'
+alias -g ...='../..'
+alias -g ....='../../..'
+
+alias dots='/usr/bin/git --git-dir=$HOME/dotto.git --work-tree=$HOME'
+alias rdots='/usr/bin/git --git-dir=$HOME/regolith-dots --work-tree=$HOME'
+
+function d () {
+  if [[ -n $1 ]]; then
+    dirs "$@"
+  else
+    dirs -v | head -10
+  fi
+}
+compdef _dirs d
+
+function venv {
+        [ -d ./venv ] || python3 -m venv venv
+        source ./venv/bin/activate
+}
+
+function mckdir {
+        mkdir -p $@ && cd ${@:$#}
+}
+
+function sticker {
+        local original=$1
+
+        local newName=${original%.*}.png
+        convert $original $newName
+        convert $newName -resize 512x512 $newName
+}
+
+
+# clipcopy - Copy data to clipboard
+# Usage:
+#  <command> | clipcopy    - copies stdin to clipboard
+#  clipcopy <file>         - copies a file's contents to clipboard
+#
+# clippaste - writes clipboard's contents to stdout
+function clipcopy() {
+        xclip -in -selection clipboard < "${1:-/dev/stdin}";
+}
+
+function clippaste() {
+        xclip -out -selection clipboard;
+}
+
+weather() {
+    local request="wttr.in/$1?F"
+    [ "$(tput cols)" -lt 125 ] && request+='?n'
+    curl -H "Accept-Language: ${LANG%_*}" --compressed "$request"
+}
+
+ghrepo() {
+	mkdir $1
+	cd $1
+	git init
+	gh repo create $1 --private -y
+	touch README.md .gitignore
+	git add .
+	git commit -m "first commit"
+	git push -u origin master
+}
+
+# autosource venv on cd
+#
+#! `cd` gives exit status 1 cause $1 doesnt exist (?)
+#function cd {
+#       builtin cd $1
+#       [ -d ./venv ] && source ./venv/bin/activate
+#}
+
+### CHANGE TITLE OF TERMINALS
+#case ${TERM} in
+#  xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|alacritty|st|konsole*)
+#    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
+#        ;;
+#  screen*)
+#    PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"'
+#    ;;
+#esac
+
+### ARCHIVE EXTRACTION
+# usage: ex <file>
+extract ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1   ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *.deb)       ar x $1      ;;
+      *.tar.xz)    tar xf $1    ;;
+      *.tar.zst)   unzstd $1    ;;
+      *)           echo "'$1' cannot be extracted via extract()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+# figlet -- text changing in the terminal
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
