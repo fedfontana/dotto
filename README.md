@@ -24,7 +24,7 @@ dots push -u origin master
 
 Clone the repo
 ```sh
-git clone git@github.com:fedfontana/dotto.git dotto.git
+git clone --bare git@github.com:fedfontana/dotto.git dotto.git
 ```
 
 then move all of the stuff in the right places running this command:
@@ -33,14 +33,7 @@ git --git-dir=./dotto.git --work-tree=. checkout master .
 ```
 (assuming you are in /home/\<your user\>/)
 
-still need to clone the bare repo
-```sh
-git clone --bare git@github.com:fedfontana/dotto.git dotto.git
-```
-
 remove the untracked file stuff
 ```
 dots config --local status.showUntrackedFiles no
 ```
-
-then add all of the stuff back again and push? should really find a better solution
