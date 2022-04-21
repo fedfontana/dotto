@@ -1,8 +1,11 @@
 #!/bin/sh
 
+#TODO band aid fix, move it somewhere else
+autoload -Uz compinit
+compinit
+
 #https://github.com/ohmyzsh/ohmyzsh/blob/master/themes/eastwood.zsh-theme
 #source ~/.config/zsh/eastwood.zsh
-
 export ZSHCONFIGDIR=$HOME/.config/zsh
 
 # Take advantage of $LS_COLORS for completion as well.
@@ -40,7 +43,8 @@ setopt always_to_end
 unsetopt BEEP
 
 # completions
-autoload -Uz compinit
+#autoload -Uz compinit #err qui
+
 zstyle ':completion:*' menu select
 # zstyle ':completion::complete:lsof:*' menu yes select
 zstyle ':completion:*' special-dirs true # complete . and .. special dirs
@@ -60,16 +64,25 @@ autoload -Uz colors && colors
 source "$ZSHCONFIGDIR/zsh-functions"
 
 # Normal files to source
+
 zsh_add_file "zsh-exports"
-zsh_add_file "zsh-vim-mode"
+#zsh_add_file "zsh-vim-mode"
 zsh_add_file "zsh-aliases"
 zsh_add_file "zsh-prompt"
 zsh_add_file "zsh-keys"
 
+#zsh_add_file "zsh-spaceship-config"
+
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
+zsh_add_plugin "zsh-users/zsh-completions"
 zsh_add_plugin "hlissner/zsh-autopair"
+
+#zsh_add_plugin "unixorn/fzf-zsh-plugin"
+#zsh_add_plugin "spaceship-prompt/spaceship-prompt"
+#source "$ZSHCONFIGDIR/plugins/spaceship-prompt/spaceship.zsh"
+
 #zsh_add_completion "esc/conda-zsh-completion" false
 # For more plugins: https://github.com/unixorn/awesome-zsh-plugins
 # More completions https://github.com/zsh-users/zsh-completions
@@ -92,7 +105,14 @@ zsh_add_plugin "hlissner/zsh-autopair"
 # FZF 
 #[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 #[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 #[ -f $ZDOTDIR/completion/_fnm ] && fpath+="$ZDOTDIR/completion/"
 # export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
-compinit
+
+#compinit
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

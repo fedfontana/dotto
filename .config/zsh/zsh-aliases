@@ -4,6 +4,7 @@ alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git
 alias vimrc='nvim ~/.config/nvim/init.vim'
 alias zshrc='nvim ~/.zshrc'
 alias zaliases='nvim ~/.config/zsh/zsh-aliases'
+alias zexports='nvim ~/.config/zsh/zsh-exports'
 
 # Colorize grep output
 alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
@@ -25,6 +26,9 @@ if command diff --color . . &>/dev/null; then
   alias diff='diff --color'
 fi
 
+alias teams='teams --disable-seccomp-filter-sandbox'
+alias kd='kitty +kitten diff'
+alias icat='kitty +kitten icat'
 alias r='ranger'
 alias o='xdg-open'
 alias py='python3'
@@ -45,7 +49,12 @@ alias v='nvim'
 alias vim='nvim'
 alias zshrc='nvim ~/.zshrc'
 alias gbr='xdg-open $(git remote get-url origin | sed -e "s/git\@/https:\/\//;s/:/\//2") &>/dev/null'
-alias bat='batcat --color=always --decorations=always --paging --tabs=2'
+
+# ubuntu
+# alias bat='batcat --color=always --decorations=always --paging --tabs=2'
+# arch
+alias bat='bat --color=always --decorations=always --paging --tabs=2'
+
 alias rmj='find . -name "*.class" -exec rm -f {} \;'
 alias -g ...='../..'
 alias -g ....='../../..'
@@ -155,9 +164,3 @@ extract ()
     echo "'$1' is not a valid file"
   fi
 }
-
-# figlet -- text changing in the terminal
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
