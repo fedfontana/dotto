@@ -51,9 +51,9 @@ alias zshrc='nvim ~/.zshrc'
 alias gbr='xdg-open $(git remote get-url origin | sed -e "s/git\@/https:\/\//;s/:/\//2") &>/dev/null'
 
 # ubuntu
-# alias bat='batcat --color=always --decorations=always --paging --tabs=2'
+alias bat='batcat --color=always --decorations=always --paging --tabs=2'
 # arch
-alias bat='bat --color=always --decorations=always --paging --tabs=2'
+# alias bat='bat --color=always --decorations=always --paging --tabs=2'
 
 alias rmj='find . -name "*.class" -exec rm -f {} \;'
 alias -g ...='../..'

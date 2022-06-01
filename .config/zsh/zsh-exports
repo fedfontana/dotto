@@ -21,8 +21,12 @@ export PATH="$HOME/.cargo/bin":$PATH
 #export PATH="$GOROOT/bin":$PATH
 export PATH=$GOPATH:$PATH
 export PATH="$GOPATH/bin":$PATH
-#export MANPAGER="sh -c 'col -bx | batcat --color=always --decorations=always --tabs=2 -l man -p'"
-export MANPAGER="sh -c 'col -bx | bat --color=always --decorations=always --tabs=2 -l man -p'"
+
+# ubuntu
+export MANPAGER="sh -c 'col -bx | batcat --color=always --decorations=always --tabs=2 -l man -p'"
+# arch
+# export MANPAGER="sh -c 'col -bx | bat --color=always --decorations=always --tabs=2 -l man -p'"
+
 export MANWIDTH=999
 
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
