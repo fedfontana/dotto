@@ -10,6 +10,9 @@ set autoindent
 set copyindent
 set wildmenu
 set mouse=a
+set noexpandtab
+set tabstop=4
+set shiftwidth=4
 
 "nmap <c-s> :w<CR>
 imap <c-s> <Esc>:w<CR>a

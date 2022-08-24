@@ -19,20 +19,21 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
 
-#da oh-my-zsh
+# from oh-my-zsh
 # History command configuration
 setopt extended_history       # record timestamp of command in HISTFILE
 setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
 setopt hist_ignore_dups       # ignore duplicated commands history list
 setopt hist_ignore_space      # ignore commands that start with space
+# Other
+setopt long_list_jobs
 
-# dal tizio
 setopt extendedglob nomatch
 setopt interactive_comments
 stty stop undef		# Disable ctrl-s to freeze terminal.
 zle_highlight=('paste:none')
 
-#da ohmyzsh --- roba completion
+# from ohmyzsh --- completion stuff
 unsetopt menu_complete # do not autoselect the first completion entry
 unsetopt flowcontrol
 setopt auto_menu # show completion menu on successive tab press
@@ -41,9 +42,6 @@ setopt always_to_end
 
 # beeping is annoying
 unsetopt BEEP
-
-# completions
-#autoload -Uz compinit #err qui
 
 zstyle ':completion:*' menu select
 # zstyle ':completion::complete:lsof:*' menu yes select
@@ -64,14 +62,11 @@ autoload -Uz colors && colors
 source "$ZSHCONFIGDIR/zsh-functions"
 
 # Normal files to source
-
 zsh_add_file "zsh-exports"
 #zsh_add_file "zsh-vim-mode"
 zsh_add_file "zsh-aliases"
 #zsh_add_file "zsh-prompt"
 zsh_add_file "zsh-keys"
-
-#zsh_add_file "zsh-spaceship-config"
 
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
@@ -80,8 +75,6 @@ zsh_add_plugin "zsh-users/zsh-completions"
 zsh_add_plugin "hlissner/zsh-autopair"
 
 #zsh_add_plugin "unixorn/fzf-zsh-plugin"
-#zsh_add_plugin "spaceship-prompt/spaceship-prompt"
-#source "$ZSHCONFIGDIR/plugins/spaceship-prompt/spaceship.zsh"
 
 #zsh_add_completion "esc/conda-zsh-completion" false
 # For more plugins: https://github.com/unixorn/awesome-zsh-plugins
@@ -111,10 +104,7 @@ zsh_add_plugin "hlissner/zsh-autopair"
 #[ -f $ZDOTDIR/completion/_fnm ] && fpath+="$ZDOTDIR/completion/"
 # export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
 
-#compinit
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval "$(starship init zsh)"
