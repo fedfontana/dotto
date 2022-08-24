@@ -68,7 +68,7 @@ source "$ZSHCONFIGDIR/zsh-functions"
 zsh_add_file "zsh-exports"
 #zsh_add_file "zsh-vim-mode"
 zsh_add_file "zsh-aliases"
-zsh_add_file "zsh-prompt"
+#zsh_add_file "zsh-prompt"
 zsh_add_file "zsh-keys"
 
 #zsh_add_file "zsh-spaceship-config"
@@ -116,3 +116,5 @@ zsh_add_plugin "hlissner/zsh-autopair"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(starship init zsh)"

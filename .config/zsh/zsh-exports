@@ -22,6 +22,9 @@ export PATH="$HOME/.cargo/bin":$PATH
 export PATH=$GOPATH:$PATH
 export PATH="$GOPATH/bin":$PATH
 
+# Docker
+export DOCKER_HOST="unix:///run/user/1000/docker.sock"
+
 # ubuntu
 export MANPAGER="sh -c 'col -bx | batcat --color=always --decorations=always --tabs=2 -l man -p'"
 # arch
