@@ -1,0 +1,66 @@
+format = """
+$sudo\
+$username$hostname$directory\
+$container\
+$nodejs\
+$git_branch$git_metrics$git_status$git_state\
+$jobs\
+$character"""
+
+add_newline = false
+
+[username]
+show_always = false
+format = "[$user]($style)"
+[hostname]
+#ssh_only = false
+trim_at = ""
+format = "(@[$ssh_symbol$hostname]($style) )"
+
+[directory]
+truncate_to_repo = false
+format = "([$path]($style)[$read_only]($read_only_style) )"
+
+[git_branch]
+format = "[$symbol$branch(:$remote_branch)]($style)"
+#ignore_branches = ["master", "main"]
+symbol = "\ue0a0"
+
+[git_metrics]
+disabled = false
+format = " (\\(([+$added]($added_style))([-$deleted]($deleted_style))\\))"
+
+[git_state]
+format = " [\\[$state($progress_current/$progress_total)($style)\\]]($style)"
+
+[git_status]
+format = "(\\([$all_status$ahead_behind]($style)\\))"
+deleted = "X"
+renamed = "r"
+ahead = ">"
+behind = "<"
+diverged = "%"
+style = ""
+
+[sudo]
+disabled = false
+format = "\\[[$symbol]($style)\\] "
+symbol = "sudo"
+
+[status]
+disabled = false
+
+[nodejs]
+symbol = "node"
+format = "\\[[$symbol ($version)]($style)\\]"
+version_format = "v${major}"
+detect_extensions = ["js", "mjs", "cjs", "ts", "mts", "cts", "jsx", "tsx"]
+
+[character]
+success_symbol = "[\\$](bold green)"
+error_symbol = "[\\$](bold red)"
+
+[jobs]
+symbol = "job\\(s\\)"
+format = "\\[[$number$symbol]($style)\\]"
+
