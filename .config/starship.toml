@@ -12,6 +12,7 @@ add_newline = false
 [username]
 show_always = false
 format = "[$user]($style)"
+
 [hostname]
 #ssh_only = false
 trim_at = ""
@@ -52,7 +53,7 @@ disabled = false
 
 [nodejs]
 symbol = "node"
-format = "\\[[$symbol ($version)]($style)\\]"
+format = "\\[[$symbol ($version)]($style)\\] "
 version_format = "v${major}"
 detect_extensions = ["js", "mjs", "cjs", "ts", "mts", "cts", "jsx", "tsx"]
 

@@ -34,7 +34,8 @@ stty stop undef		# Disable ctrl-s to freeze terminal.
 zle_highlight=('paste:none')
 
 # from ohmyzsh --- completion stuff
-unsetopt menu_complete # do not autoselect the first completion entry
+# unsetopt menu_complete # do not autoselect the first completion entry
+setopt menu_complete
 unsetopt flowcontrol
 setopt auto_menu # show completion menu on successive tab press
 setopt complete_in_word
